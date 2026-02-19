@@ -17,7 +17,7 @@ def create_cad_overlay(text="12.5 mm", style='horizontal', filename='overlay.png
     COLOR_CYAN  = '#00E5FF'  # The signature Cyan
     COLOR_TEXT  = '#1A222D'  # Dark (for inside the cyan box)
     FONT_FAMILY = 'IBM Plex Mono'
-    FONT_SIZE   = 20
+    FONT_SIZE   = 40
     LINE_WIDTH  = 2.5
     
     # ==========================================
@@ -38,19 +38,19 @@ def create_cad_overlay(text="12.5 mm", style='horizontal', filename='overlay.png
     if style == 'horizontal':
         # Draw the main line with arrows
         ax.annotate(
-            '', xy=(0.5, 2.5), xytext=(9.5, 2.5),
-            arrowprops=dict(arrowstyle='<|-|>', color=COLOR_CYAN, lw=LINE_WIDTH, mutation_scale=20)
+            '', xy=(1.6, 2.5), xytext=(2.6, 2.5),
+            arrowprops=dict(arrowstyle='<|-|>', color=COLOR_CYAN, lw=LINE_WIDTH-0.5, mutation_scale=25)
         )
         # Draw the "End Caps" (Vertical lines at the measurement points)
-        ax.plot([0.5, 0.5], [2.2, 2.8], color=COLOR_CYAN, lw=LINE_WIDTH) # Left Cap
-        ax.plot([9.5, 9.5], [2.2, 2.8], color=COLOR_CYAN, lw=LINE_WIDTH) # Right Cap
+        ax.plot([1.6, 1.6], [2.2, 2.8], color=COLOR_CYAN, lw=LINE_WIDTH) # Left Cap
+        ax.plot([2.6, 2.6], [2.2, 2.8], color=COLOR_CYAN, lw=LINE_WIDTH) # Right Cap
         
         # Draw the Text Box in the center
         ax.text(
-            5.0, 2.5, text,
+            6.0, 2.0, text,
             ha='center', va='center',
             color=COLOR_TEXT, fontsize=FONT_SIZE, weight='bold', family=FONT_FAMILY,
-            bbox=dict(boxstyle="square,pad=0.6", fc=COLOR_CYAN, ec="none")
+            bbox=dict(boxstyle="square,pad=0.2", fc=COLOR_CYAN, ec="none")
         )
 
     # Style B: Vertical Measurement (Up/Down Arrows)
@@ -62,19 +62,19 @@ def create_cad_overlay(text="12.5 mm", style='horizontal', filename='overlay.png
         # Main Line
         ax.annotate(
             '', xy=(2.5, 0.5), xytext=(2.5, 9.5),
-            arrowprops=dict(arrowstyle='<|-|>', color=COLOR_CYAN, lw=LINE_WIDTH, mutation_scale=20)
+            arrowprops=dict(arrowstyle='<|-|>', color=COLOR_CYAN, lw=LINE_WIDTH, mutation_scale=50)
         )
         # End Caps (Horizontal lines)
         ax.plot([2.2, 2.8], [0.5, 0.5], color=COLOR_CYAN, lw=LINE_WIDTH) # Bottom Cap
         ax.plot([2.2, 2.8], [9.5, 9.5], color=COLOR_CYAN, lw=LINE_WIDTH) # Top Cap
         
         # Text Box (Rotated 90 degrees or Horizontal? Usually horizontal is easier to read)
-        ax.text(
-            2.5, 5.0, text,
-            ha='center', va='center', rotation=90,
-            color=COLOR_TEXT, fontsize=FONT_SIZE, weight='bold', family=FONT_FAMILY,
-            bbox=dict(boxstyle="square,pad=0.6", fc=COLOR_CYAN, ec="none")
-        )
+        #ax.text(
+        #    2.5, 5.0, text,
+        #    ha='center', va='center', rotation=90,
+        #    color=COLOR_TEXT, fontsize=FONT_SIZE, weight='bold', family=FONT_FAMILY,
+        #    bbox=dict(boxstyle="square,pad=0.6", fc=COLOR_CYAN, ec="none")
+        #)
 
     # Style C: Callout Pointer (Line pointing to a spot)
     elif style == 'callout':
@@ -114,10 +114,10 @@ if __name__ == "__main__":
     # Generate 3 Standard Templates for your Library
     
     # 1. The "Width" Measure (Good for Battery size, Glue gap)
-    create_cad_overlay("12.7 mm", style='horizontal', filename='CAD_Overlay_Horizontal.png')
+    create_cad_overlay("1.39V ↘ 1.27V", style='horizontal', filename='CAD_Overlay_Horizontal.png')
     
     # 2. The "Height" Measure (Good for Flame height, Stack size)
     create_cad_overlay("TEMP: 45C", style='vertical', filename='CAD_Overlay_Vertical.png')
     
     # 3. The "Spec" Callout (Good for pointing at LED filament or Crack)
-    create_cad_overlay("1800K CORE", style='callout', filename='CAD_Overlay_Callout.png')
+    #create_cad_overlay("1800K CORE", style='callout', filename='CAD_Overlay_Callout.png')
