@@ -14,11 +14,11 @@ def create_cad_overlay(text="12.5 mm", style='horizontal', filename='overlay.png
     # ==========================================
     # PART 1: THE CONFIGURATION
     # ==========================================
-    COLOR_CYAN = '#00E5FF'  # The signature Cyan
-    COLOR_TEXT = '#1A222D'  # Dark (for inside the cyan box)
-    FONT_FAMILY     = 'IBM Plex Mono'
-    FONT_SIZE = 20
-    LINE_WIDTH = 2.5
+    COLOR_CYAN  = '#00E5FF'  # The signature Cyan
+    COLOR_TEXT  = '#1A222D'  # Dark (for inside the cyan box)
+    FONT_FAMILY = 'IBM Plex Mono'
+    FONT_SIZE   = 20
+    LINE_WIDTH  = 2.5
     
     # ==========================================
     # PART 2: PLOTTING
