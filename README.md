@@ -10,7 +10,7 @@ This script generates transparent PNGs in three technical styles:
 
 | **Style** | **Description** | **Use Case** |
 | :--- | :--- | :--- |
-| **Horizontal** | `<|-- [ TEXT ] --|>` | Measuring widths (e.g., battery gaps, component size). |
+| **Horizontal** | `<-- [ TEXT ] -->` | Measuring widths (e.g., battery gaps, component size). |
 | **Vertical** | Up/Down arrows with text. | Measuring heights (e.g., flame height, stack thickness). |
 | **Callout** | Right-angle pointer (`->`). | Labeling specific features (e.g., "1800K CORE", "CRACK"). |
 
